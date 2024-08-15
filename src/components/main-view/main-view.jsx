@@ -11,15 +11,15 @@ export const MainView = () => {
         fetch("https://cinema-express-948d60ca8d20.herokuapp.com/movies")
             .then((response) => response.json())
             .then((data) => {
+                console.log(data);
                 const moviesFromApi = data.map((movie) => {
                     return {
-                        id: movie.key,
-                        title: movie.title,
-                        description: movie.description,
+                        id: movie._id,
+                        title: movie.Title,
+                        description: movie.Description,
                         genre: movie.genre,
-                        image: movie.imageurl,
-                        director: movie.director_name?. [0],
-                        featured: movie.featured,
+                        image: movie.ImagePath,
+                        director: movie.director_name?. [0]
                     };
                 });
 
