@@ -4,7 +4,6 @@ import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
     const [movies, setMovies] = useState([]);
-
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
@@ -17,9 +16,9 @@ export const MainView = () => {
                         id: movie._id,
                         title: movie.Title,
                         description: movie.Description,
-                        genre: movie.genre,
+                        genre: movie.Genre.Name,
                         image: movie.ImagePath,
-                        director: movie.director_name?. [0]
+                        director: movie.Director.Name,
                     };
                 });
 
