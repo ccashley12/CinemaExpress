@@ -5,7 +5,11 @@
 ## Task 3.3 - Structure
 - Added component folders
 - Allowed users to select movies and view their information
-## Task 3.4 - Adding Data
+## Task 3.4 - Adding Data from API
 - Added by fetching data form API
 - Added prop-types for certain layout
-## Task 3.5 - 
+## Task 3.5 - Added Login and Signup. Enabled authentication
+- Added LoginView for users to acceess profiles
+- Added SignupView for users to create accounts
+- Enabled Authentication for all requests
+## Task 3.6 - 
