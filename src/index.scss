@@ -1,5 +1,4 @@
-$color: magenta;
+$primary: orange;
+$body-bg: rgb(254, 103, 206);
 
-.cinema-express {
-    color: $color;
-}
+@import '~bootstrap/scss/bootstrap.scss';
