@@ -22,8 +22,8 @@ export const MainView = () => {
             headers: { Authorization: 'Bearer ${token}' }
         })
             .then((response) => response.json())
-            .then((movies) => {
-                const moviesFromApi = movies.map((movie) => {
+            .then((data) => {
+                const moviesFromApi = data.map((movie) => {
                     return {
                         id: movie._id,
                         title: movie.Title,
@@ -44,7 +44,10 @@ export const MainView = () => {
             <Row className="justify-content-md-center">
                 {!user ? (
                     <Col md={5}>
-                        <LoginView onLoggedIn={(user) => setUser(user)} />
+                        <LoginView onLoggedIn={(user, token) => {
+                            setUser(user);
+                            setToken(token);
+                            }} />
                         or
                         <SignupView />
                     </Col>
