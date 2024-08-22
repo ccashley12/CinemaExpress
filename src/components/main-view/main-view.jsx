@@ -12,7 +12,6 @@ export const MainView = () => {
     const storedToken = localStorage.getItem("token");
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
-    const [error, setError] = useState(null);
     const [user, setUser] = useState(storedUser);
     const [token, setToken] = useState(storedToken);
 
@@ -45,10 +44,6 @@ export const MainView = () => {
                 console.log(e);
             });
     }, [token]);
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
 
     if (!user) {
         return (
