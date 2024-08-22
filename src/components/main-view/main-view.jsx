@@ -20,9 +20,14 @@ export const MainView = () => {
         if (!token) return;
 
         fetch("https://cinema-express-948d60ca8d20.herokuapp.com/movies", {
-            headers: { Authorization: 'Bearer ${token}' }
+            headers: { Authorization: `Bearer ${token}` }
         })
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then((data) => {
                 const moviesFromApi = data.map((movie) => {
                     return {
@@ -69,16 +74,6 @@ export const MainView = () => {
         );
     }
 
-    if (selectedMovie) {
-        return (
-            <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-        );
-    }
-
-    if (movies.length === 0) {
-        return <div>The list is empty!</div>;
-    }
-
         return (
             <Row className="justify-content-md-center mt=5">
                 {!user ? (
@@ -101,7 +96,7 @@ export const MainView = () => {
                     <>
                         <Row className="justify-content-md-center mt-5">
                             <Col xs={12} className="text-center">
-                                <h1>Movie List</h1>
+                                <h1>Movie Library</h1>
                             </Col>
                         </Row>
                         {movies.map((movie) => (
