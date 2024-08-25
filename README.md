@@ -12,4 +12,8 @@
 - Added LoginView for users to acceess profiles
 - Added SignupView for users to create accounts
 - Enabled Authentication for all requests
-## Task 3.6 - 
+## Task 3.6 - Installed Boostrap and page design
+- Installed bootstrap to implement design
+- Users can now login and view all movies seperated into movie cards
+- Users can click each movie card to view information about specific movies
+## Task 3.7 - 
