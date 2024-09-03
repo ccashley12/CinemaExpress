@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const UserInfo = ({ email, name }) => {
+export const ProfileInfo = ({ email, name }) => {
     return (
         <>
             <h2>Account Information</h2>
@@ -11,7 +11,7 @@ export const UserInfo = ({ email, name }) => {
     );
 };
 
-UserInfo.prototype ={
+ProfileInfo.prototype ={
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired
 };

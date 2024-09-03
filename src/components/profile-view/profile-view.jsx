@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
-import { UserInfo } from "./user-info";
+import { ProfileInfo } from "./profile-info";
 import { ProfileUpdate } from "./profile-update";
 
 export const ProfileView = ({user, token, updatedUser, onLoggedOut}) => {
@@ -29,7 +29,7 @@ export const ProfileView = ({user, token, updatedUser, onLoggedOut}) => {
                 <Col>
                     <Card>
                         <Card.Header>
-                            <UserInfo name={user.Username} email={user.Email}/>
+                            <ProfileInfo name={user.Username} email={user.Email}/>
                         </Card.Header>
                     </Card>
                 </Col>
