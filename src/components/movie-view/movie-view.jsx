@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from "react";
-import { Button, Card, Row} from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom"
 import "./movie-view.scss";
