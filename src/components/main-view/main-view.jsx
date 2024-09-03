@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
+import { ProfileView } from "../profile-view/profile-view";
 
 export const MainView = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -51,9 +52,22 @@ export const MainView = () => {
             });
     }, [token]);
 
+    const onLoggedIn = (user, token) => {
+        setUser(user);
+        setToken(token);
+        localStorage.setItem("user", JSON.stringify(user));
+        localStroage.setItem("token", token);
+    }
+
+    const updatedUser = user => {
+        setUser(user);
+        localStorage.setItem("user", JSON.stringify(user));
+    }
+
     if (!user) {
         return (
             <BrowserRouter>
+            <NavigationBar user={user} onLoggedOut={onLoggedOut} />
                 <Row className="justify-content-md-center mt=5">
                     <Routes>
                         <Route
@@ -83,10 +97,8 @@ export const MainView = () => {
                                         <Navigate to="/" />
                                     ) : (
                                         <Col md={5}>
-                                            <LoginView onLoggedIn={(user, token) => { 
-                                                setUser(user);
-                                                setToken(token);
-                                                }} 
+                                            <LoginView
+                                                onLoggedIn={onLoggedIn}
                                             />
                                             <Col md={12} className="text-center my-3">
                                                 <span>
@@ -95,6 +107,25 @@ export const MainView = () => {
                                             </Col>
                                         </Col>
                                     )}                                
+                                </>
+                            }
+                        />
+                        <Route
+                            path="/users/:Username"
+                            element={
+                                <>
+                                    {!user ? (
+                                        <Navigate to="/login" replace />
+                                    ) : (
+                                        <Col md={5}>
+                                            <ProfileView
+                                                user={user}
+                                                token={token}
+                                                updatedUser={updatedUser}
+                                                onLoggedOut={onLoggedOut}
+                                            />
+                                        </Col>
+                                    )}
                                 </>
                             }
                         />
@@ -169,7 +200,7 @@ export const MainView = () => {
                                         ))}
                                     </>
                                 )} */}
-                                <Button
+                                {/* <Button
                                     className="logout-button"
                                     onClick={() => {
                                         setUser(null);
@@ -177,7 +208,7 @@ export const MainView = () => {
                                         localStorage.clear();
                                     }}
                                     >Logout
-                                </Button>
+                                </Button> */}
                     </Routes>
                 </Row>
             </BrowserRouter>
