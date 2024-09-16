@@ -1,106 +1,64 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Form, Button } from "react-bootstrap";
+import React from "react";
+import { Button, Form } from "react-bootstrap";
 
-export const ProfileUpdate = ({user, updatedUser}) => {
-    const token = localStorage.getItem("token");
-
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [birthday, setBirthday] = useState("");
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        const data = {
-            Username: username,
-            Password: password,
-            Email: email,
-            Birthday: birthday
-        }
-
-        fetch(`https://cinema-express-948d60ca8d20.herokuapp.com/users/${user.Username}`,
-        {
-            method: "PUT",
-            headers: {
-                "Content-Type" : "application/json",
-                Authorization: `Bearer ${token}`
-            },
-            body: JSON.stringify(data),
-        }).then((response) => {
-            console.log(response);
-            if (response.ok) {
-                console.log("Update successful!");
-                return response.json();
-            } else {
-                alert("Update failed!");
-            }
-        }).then((data) => {
-            updatedUser(data);
-            setUsername(data.Username);
-            setPassword(data.Password);
-            setEmail(data.Email);
-            setBirthday(data.Birthday);
-            window.location.reload();
-        })
-        .catch((e) => {
-            console.log(e);
-        });
-    };
+function ProfileUpdate({user, handleChange, handleSaveClick, handleEditClick, isEditing, editedUser}) {
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <h2>Update Profile</h2>
-            <Form.Group controlId="formUsername">
-                <Form.Label>Username:</Form.Label>
-                <Form.Control
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                    minLength="3"
-                />
-            </Form.Group>
-            <Form.Group controlId="formPassword">
-                <Form.Label>Password:</Form.Label>
-                <Form.Control
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                    minLength="8"
-                />
-            </Form.Group>
-            <Form.Group controlId="formEmail">
-                <Form.Label>Email:</Form.Label>
-                <Form.Control
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>Birthday:</Form.Label>
-                <Form.Control
-                    type="date"
-                    value={birthday}
-                    onChange={(e) => setBirthday(e.target.value)}
-                    required
-                />
-            </Form.Group>
-            <br></br>
-            <div className="d-grid gap-2">
-                <Button variant="primary" type="submit">
-                    Update
-                </Button>
+        <>
+            <div>
+            <h2>Update Profile Information</h2>
             </div>
-        </Form>
-    )
-};
+                <Form.Group className="mb-3">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={isEditing ? editedUser.username : user.username}
+                        onChange={handleChange}
+                        required
+                        minLength="3"
+                        disabled={!isEditing}
 
-ProfileUpdate.propTypes = {
-    user: PropTypes.object.isRequired,
-    updatedUser: PropTypes.func.isRequired
-};
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={isEditing ? editedUser.password : user.password}
+                        onChange={handleChange}
+                        required
+                        minLength="8"
+                        disabled={!isEditing}
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control
+                        type="email"
+                        value={isEditing ? editedUser.email : user.email}
+                        onChange={handleChange}
+                        required
+                        disabled={!isEditing}
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Birthday:</Form.Label>
+                    <Form.Control
+                        type="date"
+                        value={isEditing ? editedUser.birthday : user.birthday}
+                        onChange={handleChange}
+                        required
+                        disabled={!isEditing}
+                    />
+                </Form.Group>
+                <br></br>
+                <div className="d-grid gap-2">
+                    <Button onClick={isEditing ? handleSaveClick : handleEditClick}>
+                        {isEditing ? "Save" : "Edit Profile"}
+                    </Button>
+                </div>
+        </>
+    );
+}
+
+export default ProfileUpdate;
