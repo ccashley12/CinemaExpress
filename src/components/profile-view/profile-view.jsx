@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ProfileInfo from "./profile-info";
-import DeleteAccountButton from "./delete-account";
 import FavoriteMovies from "./favorite-movies";
 import ProfileUpdate from"./profile-update";
 import { Card, Col, Container, Row } from "react-bootstrap";
