@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -11,7 +11,7 @@ export const LoginView = ({ onLoggedIn }) => {
 
         const data = {
             Username: username,
-            Password: password,
+            Password: password
         };
 
         fetch("https://cinema-express-948d60ca8d20.herokuapp.com/login", {
