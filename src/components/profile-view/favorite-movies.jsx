@@ -1,36 +1,30 @@
+import PropTypes from "prop-types";
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { MovieCard } from "../movie-card/movie-card";
+import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-function FavoriteMovies({
-    user,
-    favoriteMovies,
-    handleFavoriteToggle,
-    favoriteMovieList,
-}) {
+export const FavoriteMovies = ({ favMovies }) => {
     return (
-        <>
-            <Container>
-                <Row className="justify-content-md-center mt-5">
-                    <Col className="text-center">
-                        <h2>Favorite Movies</h2>
-                    </Col>
-                </Row>
-                <Row className="justify-content-md-center mt-5">
-                    {favoriteMovieList.map((movie) => (
-                        <Col className="mb-5" key={movie.id} xs = {12} md={6} lg={3}>
-                            <MovieCard
-                                movie={movie}
-                                isFavorite={favoriteMovies.includes(String(movie.id))}
-                                onFavoriteToggle={handleFavoriteToggle}
-                                username={user.username}
-                            />
-                        </Col>
-                    ))}{" "}
-                </Row>
-            </Container>
-        </>
+        <div>
+            {FavoriteMovies.length === 0 ? (
+                <p>No Favorite Movies selected</p>
+            ) : (
+                favMovies.map((movie) = (
+                    <Card key={movie._id} className="mb-3">
+                        <Card.Body>
+                            <Card.Title>{movie.title}</Card.Title>
+                            <Card.Text>{movie.director}</Card.Text>
+                            <Link to={`/movies/${movie._id}`}>
+                                <Button variant="primary">About Movie</Button>
+                            </Link>
+                        </Card.Body>
+                    </Card>
+                ))
+            )}
+        </div>
     );
 };
 
-export default FavoriteMovies;
+FavoriteMovies.prototype = {
+    FavoriteMovies: PropTypes.array.isRequired
+};
