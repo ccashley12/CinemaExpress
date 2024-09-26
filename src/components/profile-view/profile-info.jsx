@@ -1,13 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function ProfileInfo({ email, name }) {
+export const ProfileInfo = ({ email, name }) => {
     return (
         <>
-            <h2>Account Information</h2>
+            <h2>Personal Information</h2>
             <p>Username: {name}</p>
             <p>Email: {email}</p>
         </>
     );
 };
 
-export default ProfileInfo
+ProfileInfo.prototype = {
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired
+};
