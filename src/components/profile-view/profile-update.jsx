@@ -1,64 +1,108 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Button, Form } from "react-bootstrap";
 
-function ProfileUpdate({user, handleChange, handleSaveClick, handleEditClick, isEditing, editedUser}) {
+export const ProfileUpdate = ({user, updatedUser}) => {
+    const token = localStorage.getItem("token");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [birthday, setBirthday] = useState("");
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const data = {
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday 
+        }
+
+        fetch(`https://cinema-express-948d60ca8d20.herokuapp.com/users/${user.Username}`, 
+        {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(data),
+        }).then((response) => {
+            console.log(response);
+            if (response.ok) {
+                console.log("Profile updated successfully!");
+                return response.json();
+            } else {
+                alert ("Profile update FAILED!");
+            }
+        })
+        .then ((data) => {
+            updatedUser(data);
+            setUsername(data.Username);
+            setPassword(data.Password);
+            setEmail(data.Email);
+            setBirthday(data.Birthday);
+            window.location.reload();
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+    };
 
     return (
         <>
-            <div>
+           <Form onSubmit={handleSubmit}>
             <h2>Update Profile Information</h2>
-            </div>
-                <Form.Group className="mb-3">
+                <Form.Group contolId="formUsername">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control
                         type="text"
-                        value={isEditing ? editedUser.username : user.username}
-                        onChange={handleChange}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                         required
                         minLength="3"
-                        disabled={!isEditing}
-
                     />
                 </Form.Group>
-                <Form.Group className="mb-3">
+                <Form.Group className="formPassword">
                     <Form.Label>Password:</Form.Label>
                     <Form.Control
-                        type="text"
-                        value={isEditing ? editedUser.password : user.password}
-                        onChange={handleChange}
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         required
                         minLength="8"
-                        disabled={!isEditing}
                     />
                 </Form.Group>
-                <Form.Group className="mb-3">
+                <Form.Group controlId="formEmail">
                     <Form.Label>Email:</Form.Label>
                     <Form.Control
                         type="email"
-                        value={isEditing ? editedUser.email : user.email}
-                        onChange={handleChange}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
-                        disabled={!isEditing}
                     />
                 </Form.Group>
-                <Form.Group className="mb-3">
+                <Form.Group controlId="formBirthday">
                     <Form.Label>Birthday:</Form.Label>
                     <Form.Control
                         type="date"
-                        value={isEditing ? editedUser.birthday : user.birthday}
-                        onChange={handleChange}
+                        value={birthday}
+                        onChange={(e) => setBirthday(e.target.value)}
                         required
-                        disabled={!isEditing}
                     />
                 </Form.Group>
                 <br></br>
                 <div className="d-grid gap-2">
-                    <Button onClick={isEditing ? handleSaveClick : handleEditClick}>
-                        {isEditing ? "Save" : "Edit Profile"}
+                    <Button variant="primary" type="submit">
+                        Update
                     </Button>
                 </div>
+            </Form>
         </>
-    );
-}
+    )
+};
 
-export default ProfileUpdate;
+ProfileUpdate.propTypes = {
+    user: PropTypes.object.isRequired,
+    updatedUser: PropTypes.func.isRequired
+};
