@@ -11,7 +11,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
 
     useEffect(() => {
         if(user && user.FavoriteMovies) {
-            const isFavorite = user.FavoriteMovies.includes(moviesId);
+            const isFavorite = user.FavoriteMovies.includes(movieId);
             setIsFavorite(isFavorite);
         }
     }, [movieId, user]);
@@ -62,12 +62,12 @@ export const MovieView = ({ movies, user, token, setUser }) => {
 
     return (
         <Card className="h-100 w-100">
-            <Card.Img variant="top" src={movie.imagePath} />
+            <Card.Img variant="top" src={movie.image} />
                 <Card.Body>
                     <Card.Header className="text-center fs-1">{movie.title}</Card.Header>
                     <br></br>
-                        <Card.Text><strong>Director</strong> - {movie.director.name}</Card.Text>
-                        <Card.Text><strong>Genre</strong> - {movie.genre.name}</Card.Text>
+                        <Card.Text><strong>Director</strong> - {movie.director}</Card.Text>
+                        <Card.Text><strong>Genre</strong> - {movie.genre}</Card.Text>
                         <Card.Text><strong>Description</strong> - {movie.description}</Card.Text>
                     <Link to={"/"}>
                         <button className="back-button">Back</button>
