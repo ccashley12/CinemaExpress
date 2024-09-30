@@ -1,7 +1,7 @@
 .back-button {
   color: #000;
   background-color: #f886d2;
-  border: none;
+  border: #000;
   border-radius: 4px;
   padding: 4px 12px;
 }
