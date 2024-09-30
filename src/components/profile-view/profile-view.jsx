@@ -1,10 +1,10 @@
 import React from "react";
 import { ProfileInfo } from "./profile-info";
 import { ProfileUpdate } from "./profile-update";
-import { FavoriteMovies } from "./favorite-movies";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { FavoriteMovies } from "./favorite-movies";
 
-export const ProfileView = ({user, token, updatedUser, onLoggedOut, favMovies}) => {
+export const ProfileView = ({movie, user, token, updatedUser, onLoggedOut, favMovies}) => {
     const ProfileDelete = () => {
         fetch(`https://cinema-express-948d60ca8d20.herokuapp.com/users/${user.Username}`, 
         {
@@ -28,22 +28,26 @@ export const ProfileView = ({user, token, updatedUser, onLoggedOut, favMovies}) 
         <>
             <Container>
                 <Row className="justify-content-center">
-                    <Col xs={12} sm={8}>
+                    <Col xs={12}>
                         <Card>
                             <Card.Body>
                                 <ProfileInfo name={user.Username} email={user.Email}/>
                             </Card.Body>
                         </Card>
                     </Col>
-                    <Col xs={12} sm={8}>
+                    <Col xs={12}>
                         <Card>
                             <Card.Body>
                                 <FavoriteMovies
-                                    user={user}
+                                    movie={movie}
                                     token={token}
                                     favMovies={favMovies}
                                 />
                             </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col xs={12}>
+                        <Card>
                             <Card.Body>
                                 <ProfileUpdate
                                     user={user}
