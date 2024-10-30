@@ -53,7 +53,7 @@ export const ProfileUpdate = ({user, updatedUser}) => {
         <>
            <Form onSubmit={handleSubmit}>
             <h2>Update Profile Information</h2>
-                <Form.Group contolId="formUsername">
+                <Form.Group controlId="formUsername">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control
                         type="text"
