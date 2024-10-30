@@ -16,8 +16,9 @@ export const MovieView = ({ movies, user, token, setUser }) => {
         }
     }, [movieId, user]);
 
+
     const addtoFavorite = () => {
-        fetch(`https://cinema-express-948d60ca8d20.herokuapp.com/users/${user.Username}/${movieId}`, 
+        fetch(`https://cinema-express-948d60ca8d20.herokuapp.com/users/${user.Username}/favorites/${movieId}`, 
         {
             method: "POST",
             headers: {
@@ -39,7 +40,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
     };
 
     const removefromFavorite = () => {
-        fetch(`https://cinema-express-948d60ca8d20.herokuapp.com/users/${user.Username}/${movieId}`,
+        fetch(`https://cinema-express-948d60ca8d20.herokuapp.com/users/${user.Username}/favorites/${movieId}`,
         {
             method: "DELETE",
             headers: {
