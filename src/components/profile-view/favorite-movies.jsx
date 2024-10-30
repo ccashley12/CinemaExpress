@@ -12,19 +12,18 @@ export const FavoriteMovies = ({ favMovies }) => {
                 </Col>
             </Row>
             <Row>
-                <Col xs={12}>
-                    {favMovies?.map((movie) => (
-                            <Card key={movie._id} className="mb-3">
-                                <Card.Body>
-                                    <Card.Title>{movie.title}</Card.Title>
-                                    <Card.Text>{movie.director}</Card.Text>
-                                    <Link to={`/movies/${movie._id}`}>
-                                        <Button variant="primary">About Movie</Button>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                        )
-                    )}
+                <Col xs={12}> 
+                    {favMovies && favMovies.map((movie) => (
+                        <Card key={movie._id} className="mb-3">
+                            <Card.Body>
+                                <Card.Title>{movie.title}</Card.Title>
+                                <Card.Text>{movie.director}</Card.Text>
+                                <Link to={`/movies/${movie._id}`}>
+                                    <Button variant="primary">About Movie</Button>
+                                </Link>
+                            </Card.Body>
+                        </Card>
+                    ))}
                 </Col>
             </Row>
         </>
