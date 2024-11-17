@@ -73,8 +73,6 @@ export const ProfileView = ({ movies, user, token, onLoggedOut }) => {
             .catch((error) => console.error("Error deleting profile:", error));
         };
 
-        const favoriteMoviesList = movies ? movies.filter((movie) => favoriteMovies.includes(movie._id)) : [];
-
         const handleAddFavorite = (movieId) => {
             fetch(`https://cinema-express-948d60ca8d20.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
                 method: "POST",
