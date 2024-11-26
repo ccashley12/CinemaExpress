@@ -1,9 +1,8 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies, AddFavorite, RemoveFavorite }) => {
+export const MovieView = ({ movies }) => {
     const { movieId } = useParams();
     const movie = movies.find((m) => m._id === movieId);
 
@@ -33,13 +32,6 @@ export const MovieView = ({ movies, AddFavorite, RemoveFavorite }) => {
                 <span>{movie.Genre.Name}</span>
             </div>
             <br></br>
-            <Button variant="primary" onClick={AddFavorite}>
-                    Add to Favorites
-            </Button>
-
-            <Button variant="danger" onClick={RemoveFavorite}>
-                    Remove from Favorites
-            </Button>
 
             <Link to={'/'}>
                 <button className="back-button">Back</button>
