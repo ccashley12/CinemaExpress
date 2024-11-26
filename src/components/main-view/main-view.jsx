@@ -10,7 +10,7 @@ import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
-    const storedUser = JSON.parse(localStorage.getItem("User"));
+    const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(storedUser? storedUser : null);
@@ -87,6 +87,7 @@ export const MainView = () => {
                                                 <ProfileView
                                                     user={user}
                                                     token={token}
+                                                    movies={movies}
                                                 />
                                             </Col>
                                         )}
@@ -122,7 +123,7 @@ export const MainView = () => {
                                         ) : (
                                             <>
                                                 {movies.map((movie) => (
-                                                    <Col className="mb-4" key={movie.id} md={3}>
+                                                    <Col className="mb-4" key={movie._id} md={3}>
                                                         <MovieCard 
                                                             movie={movie}
                                                         />
