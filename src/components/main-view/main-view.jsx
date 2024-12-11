@@ -16,6 +16,38 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser? storedUser : null);
     const [token, setToken] = useState(storedToken? storedToken : null);
 
+    const handleAddFavorite = (movieId) => {
+        console.log("Adding movie to favorites from MainView:", movieId);
+        fetch(`https://cinema-express-948d60ca8d20.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("FavoriteMovies updated (MainView):", data.FavoriteMovies);
+        })
+        .catch(error => console.error("Error adding favorite (MainView):", error));
+      };
+      
+      const handleRemoveFavorite = (movieId) => {
+        console.log("Removing movie from favorites from MainView:", movieId);
+        fetch(`https://cinema-express-948d60ca8d20.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log("FavoriteMovies updated after removal (MainView):", data.FavoriteMovies);
+        })
+        .catch(error => console.error("Error removing favorite (MainView):", error));
+      };
+      
+
     useEffect(() => {
         if (!token) {
             return;
@@ -124,11 +156,15 @@ export const MainView = () => {
                                             <>
                                                 {movies.map((movie) => (
                                                     <Col className="mb-4" key={movie._id} md={3}>
-                                                        <MovieCard 
-                                                            movie={movie}
+                                                        <MovieCard
+                                                        movie={movie}
+                                                        isFavorite={false}
+                                                        handleAddFavorite={handleAddFavorite}
+                                                        handleRemoveFavorite={handleRemoveFavorite}
                                                         />
                                                     </Col>
-                                                ))}
+                                                    ))}
+
                                             </>
                                         )}
                                     </>
