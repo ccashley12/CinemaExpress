@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import { Row, Col } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ movies, user, token, onLoggedOut }) => {
+export const ProfileView = ({ movies = [], user, token, onLoggedOut }) => {
     const [userData, setUserData] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -81,8 +81,7 @@ export const ProfileView = ({ movies, user, token, onLoggedOut }) => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
+                    Authorization: `Bearer ${token}`},
             })
             .then((response) => response.json())
             .then((data) => {
