@@ -14,21 +14,23 @@ export const MovieCard = ({ movie, handleAddFavorite, handleRemoveFavorite, isFa
     };
 
     return (
-        <Card>
-            <Card.Img variant="top" src={movie.ImagePath} />
-            <Card.Body>
-                <Card.Title>{movie.Title}</Card.Title>
-                <Card.Text>{movie.Director.Name}</Card.Text>
-                <Link to ={`/movies/${encodeURIComponent(movie._id)}`}>
-                    <Button variant="link">Open</Button>
-                </Link>
+        <>
+            <Card>
+                <Card.Img variant="top" src={movie.ImagePath} />
+                <Card.Body>
+                    <Card.Title>{movie.Title}</Card.Title>
+                    <Card.Text>{movie.Director.Name}</Card.Text>
+                    <Link to ={`/movies/${encodeURIComponent(movie._id)}`}>
+                        <Button variant="link">Open</Button>
+                    </Link>
 
-                <Button variant={isFavorite ? "danger" : "primary"} onClick={handleFavoriteToggle}>
-                    {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-                </Button>
+                    <Button variant={isFavorite ? "danger" : "primary"} onClick={handleFavoriteToggle}>
+                        {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+                    </Button>
 
-            </Card.Body>
-        </Card>   
+                </Card.Body>
+            </Card>
+        </> 
     );
 };
 
