@@ -27,7 +27,9 @@ export const MainView = () => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log("FavoriteMovies updated (MainView):", data.FavoriteMovies);
+          console.log("FavoriteMovies updated (MainView):", data.FavoriteMovies);
+          // If you want, you can store this updated favorite list in state
+          // but since this is MainView, you might just log it or handle it differently
         })
         .catch(error => console.error("Error adding favorite (MainView):", error));
       };
@@ -158,7 +160,7 @@ export const MainView = () => {
                                                     <Col className="mb-4" key={movie._id} md={3}>
                                                         <MovieCard
                                                         movie={movie}
-                                                        isFavorite={false}
+                                                        isFavorite={false} // or determine based on user's favorites if you have that info
                                                         handleAddFavorite={handleAddFavorite}
                                                         handleRemoveFavorite={handleRemoveFavorite}
                                                         />
