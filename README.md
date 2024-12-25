@@ -1,4 +1,4 @@
-### CinemaExpress
+# CinemaExpress
 
 
 ## Task 3.2 - Where it all began
