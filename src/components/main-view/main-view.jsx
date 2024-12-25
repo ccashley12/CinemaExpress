@@ -5,8 +5,7 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Row, Col, Form, InputGroup } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
@@ -15,6 +14,7 @@ export const MainView = () => {
     const [movies, setMovies] = useState([]);
     const [user, setUser] = useState(storedUser? storedUser : null);
     const [token, setToken] = useState(storedToken? storedToken : null);
+    const [filter, setFilter] = useState("");
 
     const handleAddFavorite = (movieId) => {
         console.log("Adding movie to favorites from MainView:", movieId);
@@ -49,6 +49,13 @@ export const MainView = () => {
         .catch(error => console.error("Error removing favorite (MainView):", error));
       };
       
+      const handleFilterChange = (e) => {
+        setFilter(e.target.value);
+      };
+
+      const filteredMovies = movies.filter((movie) =>
+      movie?.title?.toLowerCase().includes(filter.toLowerCase())
+      );
 
     useEffect(() => {
         if (!token) {
@@ -150,25 +157,56 @@ export const MainView = () => {
                                 path="/"
                                 element={
                                     <>
-                                        {!user ? (
-                                            <Navigate to="/login" replace />
-                                        ) : movies.length === 0 ? (
-                                            <Col>This list is empty!</Col>
-                                        ) : (
-                                            <>
-                                                {movies.map((movie) => (
-                                                    <Col className="mb-4" key={movie._id} md={3}>
-                                                        <MovieCard
-                                                        movie={movie}
-                                                        isFavorite={false} // or determine based on user's favorites if you have that info
-                                                        handleAddFavorite={handleAddFavorite}
-                                                        handleRemoveFavorite={handleRemoveFavorite}
-                                                        />
+                                        <Form className="filter-form md-4">
+                                            <Form.Group controlId="filter">
+                                                <Form.Label className="form-label-dark"></Form.Label>
+                                                <InputGroup>
+                                                    <InputGroup.Text>
+                                                        <i className="bi bi-search"></i>{" "}
+                                                    </InputGroup.Text>
+                                                <Form.Control
+                                                    type="text"
+                                                    placeholder="Start typing to find movie..."
+                                                    value={filter}
+                                                    onChange={handleFilterChange}
+                                                    className="form-control-dark"
+                                                />
+                                                </InputGroup>
+                                            </Form.Group>
+                                            </Form>
+                                            <Row>
+                                                {filteredMovies.map((movie) => (
+                                                    <Col
+                                                        className="md-5"
+                                                        key={movie._id}
+                                                        xs={12}
+                                                        sm={6}
+                                                        md={4}
+                                                        lg={3}
+                                                    >
+                                                        <MovieView movie={movie}/>
                                                     </Col>
-                                                    ))}
+                                                ))}
+                                            </Row>
+                                            {!user ? (
+                                                <Navigate to="/login" replace />
+                                            ) : movies.length === 0 ? (
+                                                <Col>This list is empty!</Col>
+                                            ) : (
+                                                <>
+                                                    {movies.map((movie) => (
+                                                        <Col className="mb-4" key={movie._id} md={3}>
+                                                            <MovieCard
+                                                            movie={movie}
+                                                            isFavorite={false} // or determine based on user's favorites if you have that info
+                                                            handleAddFavorite={handleAddFavorite}
+                                                            handleRemoveFavorite={handleRemoveFavorite}
+                                                            />
+                                                        </Col>
+                                                        ))}
 
-                                            </>
-                                        )}
+                                                </>
+                                            )}
                                     </>
                                 }
                             />
