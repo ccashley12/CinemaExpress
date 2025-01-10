@@ -176,9 +176,6 @@ export const MainView = () => {
                                             <Form.Group controlId="filter">
                                                 <Form.Label className="form-label-dark"></Form.Label>
                                                 <InputGroup>
-                                                    <InputGroup.Text>
-                                                        <i className="bi bi-search"></i>{" "}
-                                                    </InputGroup.Text>
                                                 <Form.Control
                                                     type="text"
                                                     placeholder="Search by title, director, or genre..."
