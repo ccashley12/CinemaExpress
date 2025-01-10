@@ -1,7 +1,7 @@
-import React from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { Row, Col, Button, } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 import "./movie-view.scss";
 
 export const MovieView = ({ movies }) => {
@@ -12,7 +12,11 @@ export const MovieView = ({ movies }) => {
         <>
             <Row className="mb-4">
                 <Col md={6}>
-                    <img className="image" src={movie.ImagePath} alt={movie.Title} />
+                    <img 
+                        className="image" 
+                        src={movie.ImagePath} 
+                        alt={movie.Title} 
+                    />
                 </Col>
                 <Col md={6}>
                     <Row className="mb-3">
@@ -47,4 +51,21 @@ export const MovieView = ({ movies }) => {
             </Row>
         </>
     );
+};
+
+MovieView.propTypes = {
+    movies: PropTypes.arrayOf(
+        PropTypes.shape({
+            _id: PropTypes.string.isRequired,
+            Title: PropTypes.string.isRequired,
+            Description: PropTypes.string.isRequired,
+            Director: PropTypes.shape({
+                Name: PropTypes.string.isRequired,
+            }).isRequired,
+            Genre: PropTypes.shape({
+                Name:PropTypes.string.isRequired,
+            }).isRequired,
+            ImagePath: PropTypes.string,
+        })
+    ).isRequired,
 };
