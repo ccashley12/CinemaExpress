@@ -159,9 +159,9 @@ export const MainView = () => {
                                             <Col md={8}>
                                                 <MovieView 
                                                     movies={movies}
-                                                    user={user}
-                                                    setUser={setUser}
-                                                    token={token}
+                                                    // user={user}
+                                                    // setUser={setUser}
+                                                    // token={token}
                                                 />
                                             </Col>
                                         )}
@@ -187,17 +187,6 @@ export const MainView = () => {
                                                     className="search-input"
                                                 />
                                                 </InputGroup>
-                                                    {/* {filteredMovies.length === 0 ? (
-                                                    <p>No movies found.</p>
-                                                    ) : (
-                                                        filteredMovies.map((movie, index) => (
-                                                            <div key={index} className="movie-item">
-                                                            <h2>{movie.Title}</h2>
-                                                            <p>Director: {movie.Director.Name}</p>
-                                                            <p>Genre: {movie.Genre.Name}</p>
-                                                            </div>
-                                                        ))
-                                                    )} */}
                                             </Form.Group>
                                             </Form>
                                             {!user ? (

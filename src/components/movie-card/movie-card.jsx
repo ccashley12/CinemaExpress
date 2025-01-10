@@ -20,6 +20,7 @@ export const MovieCard = ({ movie, handleAddFavorite, handleRemoveFavorite, isFa
                 <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>
                     <Card.Text>{movie.Director.Name}</Card.Text>
+                    <Card.Text>{movie.Genre.Name}</Card.Text>
                     <Link to ={`/movies/${encodeURIComponent(movie._id)}`}>
                         <Button variant="link">Open</Button>
                     </Link>
