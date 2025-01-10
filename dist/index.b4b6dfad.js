@@ -27468,36 +27468,18 @@ const MainView = ()=>{
                                                     columnNumber: 49
                                                 }, void 0),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.InputGroup), {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.InputGroup).Text, {
-                                                            children: [
-                                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
-                                                                    className: "bi bi-search"
-                                                                }, void 0, false, {
-                                                                    fileName: "src/components/main-view/main-view.jsx",
-                                                                    lineNumber: 180,
-                                                                    columnNumber: 57
-                                                                }, void 0),
-                                                                " "
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "src/components/main-view/main-view.jsx",
-                                                            lineNumber: 179,
-                                                            columnNumber: 53
-                                                        }, void 0),
-                                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                                            type: "text",
-                                                            placeholder: "Search by title, director, or genre...",
-                                                            value: searchQuery,
-                                                            onChange: handleSearchChange,
-                                                            className: "search-input"
-                                                        }, void 0, false, {
-                                                            fileName: "src/components/main-view/main-view.jsx",
-                                                            lineNumber: 182,
-                                                            columnNumber: 49
-                                                        }, void 0)
-                                                    ]
-                                                }, void 0, true, {
+                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                                        type: "text",
+                                                        placeholder: "Search by title, director, or genre...",
+                                                        value: searchQuery,
+                                                        onChange: handleSearchChange,
+                                                        className: "search-input"
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/main-view/main-view.jsx",
+                                                        lineNumber: 179,
+                                                        columnNumber: 49
+                                                    }, void 0)
+                                                }, void 0, false, {
                                                     fileName: "src/components/main-view/main-view.jsx",
                                                     lineNumber: 178,
                                                     columnNumber: 49
@@ -27518,13 +27500,13 @@ const MainView = ()=>{
                                         replace: true
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 193,
+                                        lineNumber: 190,
                                         columnNumber: 49
                                     }, void 0) : filteredMovies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                         children: "This list is empty!"
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 195,
+                                        lineNumber: 192,
                                         columnNumber: 49
                                     }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                         children: filteredMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -27537,12 +27519,12 @@ const MainView = ()=>{
                                                     handleRemoveFavorite: handleRemoveFavorite
                                                 }, void 0, false, {
                                                     fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 200,
+                                                    lineNumber: 197,
                                                     columnNumber: 61
                                                 }, void 0)
                                             }, movie._id, false, {
                                                 fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 199,
+                                                lineNumber: 196,
                                                 columnNumber: 57
                                             }, void 0))
                                     }, void 0, false)
