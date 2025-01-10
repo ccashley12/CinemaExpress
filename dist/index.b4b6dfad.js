@@ -27464,7 +27464,7 @@ const MainView = ()=>{
                                                     className: "form-label-dark"
                                                 }, void 0, false, {
                                                     fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 177,
+                                                    lineNumber: 174,
                                                     columnNumber: 49
                                                 }, void 0),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.InputGroup), {
@@ -27476,23 +27476,23 @@ const MainView = ()=>{
                                                         className: "search-input"
                                                     }, void 0, false, {
                                                         fileName: "src/components/main-view/main-view.jsx",
-                                                        lineNumber: 179,
+                                                        lineNumber: 176,
                                                         columnNumber: 49
                                                     }, void 0)
                                                 }, void 0, false, {
                                                     fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 178,
+                                                    lineNumber: 175,
                                                     columnNumber: 49
                                                 }, void 0)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 176,
+                                            lineNumber: 173,
                                             columnNumber: 45
                                         }, void 0)
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 175,
+                                        lineNumber: 172,
                                         columnNumber: 41
                                     }, void 0),
                                     !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
@@ -27500,13 +27500,13 @@ const MainView = ()=>{
                                         replace: true
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 190,
+                                        lineNumber: 187,
                                         columnNumber: 49
                                     }, void 0) : filteredMovies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                         children: "This list is empty!"
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 192,
+                                        lineNumber: 189,
                                         columnNumber: 49
                                     }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                         children: filteredMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -27519,12 +27519,12 @@ const MainView = ()=>{
                                                     handleRemoveFavorite: handleRemoveFavorite
                                                 }, void 0, false, {
                                                     fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 197,
+                                                    lineNumber: 194,
                                                     columnNumber: 61
                                                 }, void 0)
                                             }, movie._id, false, {
                                                 fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 196,
+                                                lineNumber: 193,
                                                 columnNumber: 57
                                             }, void 0))
                                     }, void 0, false)
@@ -27532,7 +27532,7 @@ const MainView = ()=>{
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 171,
+                            lineNumber: 168,
                             columnNumber: 29
                         }, undefined)
                     ]
@@ -42342,6 +42342,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieView", ()=>MovieView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _reactRouter = require("react-router");
+var _reactRouterDefault = parcelHelpers.interopDefault(_reactRouter);
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
 var _movieViewScss = require("./movie-view.scss");
