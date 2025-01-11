@@ -27470,6 +27470,13 @@ const MainView = ()=>{
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.InputGroup), {
                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                                                         type: "text",
+                                                        style: {
+                                                            padding: 10,
+                                                            marginBottom: 25,
+                                                            width: '25%',
+                                                            alignItems: 'center',
+                                                            justifyContent: 'center'
+                                                        },
                                                         placeholder: "Search by title, director, or genre...",
                                                         value: searchQuery,
                                                         onChange: handleSearchChange,
@@ -27500,13 +27507,13 @@ const MainView = ()=>{
                                         replace: true
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 187,
+                                        lineNumber: 194,
                                         columnNumber: 49
                                     }, void 0) : filteredMovies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                         children: "This list is empty!"
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 189,
+                                        lineNumber: 196,
                                         columnNumber: 49
                                     }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                         children: filteredMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -27519,12 +27526,12 @@ const MainView = ()=>{
                                                     handleRemoveFavorite: handleRemoveFavorite
                                                 }, void 0, false, {
                                                     fileName: "src/components/main-view/main-view.jsx",
-                                                    lineNumber: 194,
+                                                    lineNumber: 201,
                                                     columnNumber: 61
                                                 }, void 0)
                                             }, movie._id, false, {
                                                 fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 193,
+                                                lineNumber: 200,
                                                 columnNumber: 57
                                             }, void 0))
                                     }, void 0, false)
@@ -42513,7 +42520,7 @@ MovieView.propTypes = {
         Genre: (0, _propTypesDefault.default).shape({
             Name: (0, _propTypesDefault.default).string.isRequired
         }).isRequired,
-        ImagePath: (0, _propTypesDefault.default).string
+        ImagePath: (0, _propTypesDefault.default).string.isRequired
     })).isRequired
 };
 var _c;
