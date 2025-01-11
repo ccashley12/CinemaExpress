@@ -175,6 +175,13 @@ export const MainView = () => {
                                                 <InputGroup>
                                                 <Form.Control
                                                     type="text"
+                                                    style={{
+                                                        padding: 10,
+                                                        marginBottom: 25,
+                                                        width: '25%',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                    }}
                                                     placeholder="Search by title, director, or genre..."
                                                     value={searchQuery}
                                                     onChange={handleSearchChange}
